@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<title>Endroits</title>
+</head>
+<div class="container">
+<body>
+<h2>Ajout endroit</h2>
+<div class="container-md">
+<form action="#" th:action= "@{/addEndroit/{id}(id=${proprietaire.id})}" th:object="${endroit}" method="post">
+	<div class="mb-3">
+	<label for="Name">Nom endroit</label>
+	<input type="text" th:field="*{nomEnd}" id="Name" placeholder="Name" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label for="adresse">Adresse</label>
+	<input type="text" th:field="*{adresse}" id="adresse" placeholder="Adresee" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label for="telEnd">Numéro téléphone</label>
+	<input type="number" th:field="*{telEnd}" id="telEnd" placeholder="Tel" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label for="cat">Catégorie
+	<input type="checkbox" name="cat" th:each="categ:${categorie}" th:text="${categ.type}" th:value="${categ.idcat}" th:field="*{cat}" id="cat" class="form-check-input"/>
+		</label>
+	</div>
+	<input type="submit" value="Ajouter endroit" class="btn btn-primary">  
+</form>
+</div>
+</body>
+</div>
+</html>
